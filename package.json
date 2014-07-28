@@ -1,0 +1,17 @@
+{
+  "name": "jade-less",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kai Curry <kai@cape.io> (http://www.cape.io/)",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.8.6",
+    "gulp-jade": "^0.7.0",
+    "browser-sync": "^1.3.0",
+    "gulp-less": "^1.3.2"
+  }
+}
