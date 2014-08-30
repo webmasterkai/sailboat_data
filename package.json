@@ -1,17 +1,46 @@
 {
-  "name": "jade-less",
-  "version": "0.0.0",
-  "description": "",
+  "name": "dev-client-demo",
+  "version": "0.0.1",
+  "description": "Demo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Kai Curry <kai@cape.io> (http://www.cape.io/)",
+  "author": "Kai Curry",
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.8.6",
     "gulp-jade": "^0.7.0",
     "browser-sync": "^1.3.0",
-    "gulp-less": "^1.3.2"
+    "gulp-less": "^1.3.2",
+    "react-jade": "0.0.10",
+    "gulp-react": "^0.5.0",
+    "watchify": "^1.0.1",
+    "reactify": "^0.14.0",
+    "browserify": "^5.9.1",
+    "vinyl-source-stream": "^0.1.1",
+    "request": "^2.39.0",
+    "minifyify": "^4.0.3",
+    "gulp-zopfli": "^0.1.1",
+    "gulp-rename": "^1.2.0",
+    "run-sequence": "^0.3.6",
+    "gulp-clean": "^0.3.1",
+    "coffeeify": "^0.7.0",
+    "js-yaml": "^3.2.1",
+    "browserify-data": "^0.2.0"
+  },
+  "dependencies": {
+    "react": "^0.11.1",
+    "reactionary": "^0.9.0",
+    "lodash": "^2.4.1",
+    "ampersand-collection": "^1.3.10",
+    "ampersand-model": "^3.0.4",
+    "ampersand-subcollection": "https://github.com/webmasterkai/ampersand-subcollection/archive/fix-sorting.tar.gz",
+    "query-param-getter": "0.0.1",
+    "ampersand-router": "^1.0.2",
+    "qs": "^1.2.2",
+    "superagent": "^0.18.2",
+    "cookies-js": "^0.4.0",
+    "marked": "^0.3.2"
   }
 }
