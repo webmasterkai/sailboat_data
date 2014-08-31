@@ -27,7 +27,9 @@
     "gulp-clean": "^0.3.1",
     "coffeeify": "^0.7.0",
     "js-yaml": "^3.2.1",
-    "browserify-data": "^0.2.0"
+    "browserify-data": "^0.2.0",
+    "rethinkdb": "^1.14.0-0",
+    "fs-extra": "^0.11.0"
   },
   "dependencies": {
     "react": "^0.11.1",
@@ -41,6 +43,7 @@
     "qs": "^1.2.2",
     "superagent": "^0.18.2",
     "cookies-js": "^0.4.0",
-    "marked": "^0.3.2"
+    "marked": "^0.3.2",
+    "ampersand-state": "^4.3.9"
   }
 }

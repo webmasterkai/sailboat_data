@@ -5,8 +5,8 @@ Router = require 'ampersand-router'
 module.exports = Router.extend
 
   routes:
-    '': 'form'
+    '': 'search'
     'form': 'form'
 
-  form: ->
-    @setReactState section: 'form'
+  search: ->
+    @setReactState section: 'search'

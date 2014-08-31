@@ -9,12 +9,12 @@
 
   module.exports = Router.extend({
     routes: {
-      '': 'form',
+      '': 'search',
       'form': 'form'
     },
-    form: function() {
+    search: function() {
       return this.setReactState({
-        section: 'form'
+        section: 'search'
       });
     }
   });

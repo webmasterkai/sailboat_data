@@ -1,0 +1,21 @@
+props:
+  name:
+    type: text
+    element: text
+    label: Search
+    help: Begin typing name of sailboat
+  id:
+    type: text
+    required: true
+  hull:
+    type: text
+  rig:
+    type: text
+  loa:
+    type: text
+  first_built:
+    type: text
+  last_built:
+    type: text
+  qty_built:
+    type: text

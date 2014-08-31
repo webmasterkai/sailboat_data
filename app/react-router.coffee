@@ -3,10 +3,13 @@ React = require 'react'
 _ = require 'lodash'
 
 Router = require './router'
+Controller = require './controller'
 
+Search = require './views/search'
 
 module.exports = React.createClass
-  #getInitialState: ->
+  getInitialState: ->
+    searchTxt: ''
     #loggedIn: app.me.loggedIn
 
   router: new Router()
@@ -20,7 +23,7 @@ module.exports = React.createClass
 
   setRouterState: (newState) ->
     if newState
-      @setState newState
+      @setState Controller.prepState newState
 
   brokenEl: (section) ->
     txt = 'Hello there! Unfortunately our application is broken... '
@@ -39,7 +42,7 @@ module.exports = React.createClass
 
     header = false
     component = switch section
-      when 'example' then p 'example'
+      when 'search' then Search props
       else @brokenEl(section)
     footer = false
 

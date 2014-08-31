@@ -1,3 +1,6 @@
 /public/
-
 /node_modules/
+/prod/
+/app/*.js
+/app/*/*.js
+/app/*/*/*.js

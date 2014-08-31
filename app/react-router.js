@@ -1,5 +1,5 @@
 (function() {
-  var React, Router, div, p, _, _ref;
+  var Controller, React, Router, Search, div, p, _, _ref;
 
   React = require('react');
 
@@ -9,7 +9,16 @@
 
   Router = require('./router');
 
+  Controller = require('./controller');
+
+  Search = require('./views/search');
+
   module.exports = React.createClass({
+    getInitialState: function() {
+      return {
+        searchTxt: ''
+      };
+    },
     router: new Router(),
     initRouter: function() {
       this.router.setReactState = this.setRouterState;
@@ -20,7 +29,7 @@
     },
     setRouterState: function(newState) {
       if (newState) {
-        return this.setState(newState);
+        return this.setState(Controller.prepState(newState));
       }
     },
     brokenEl: function(section) {
@@ -44,8 +53,8 @@
       header = false;
       component = (function() {
         switch (section) {
-          case 'example':
-            return p('example');
+          case 'search':
+            return Search(props);
           default:
             return this.brokenEl(section);
         }
