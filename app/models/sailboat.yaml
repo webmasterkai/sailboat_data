@@ -1,21 +1,43 @@
 props:
+  retrieved:
+    type: bool
+    default: false
+    required: true
   name:
-    type: text
-    element: text
+    type: string
+    element: hidden
     label: Search
+    title: Class Name
     help: Begin typing name of sailboat
   id:
-    type: text
+    type: string
     required: true
-  hull:
-    type: text
-  rig:
-    type: text
+    element: hidden
+  beam: string
+  builder:
+    type: string
+  hull-type:
+    type: string
+  rig-type:
+    type: string
   loa:
+    type: string
+    title: LOA
+  lwl:
+    type: string
+  first-built:
+    type: string
+  last-built:
+    type: string
+  built:
+    type: string
+  builders:
+    type: object
+  construct:
     type: text
-  first_built:
+    title: Construction Material
+  disp:
     type: text
-  last_built:
-    type: text
-  qty_built:
+    title: Displacement
+  hull-type:
     type: text

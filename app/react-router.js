@@ -28,8 +28,10 @@
       return this.initRouter();
     },
     setRouterState: function(newState) {
+      var s;
       if (newState) {
-        return this.setState(Controller.prepState(newState));
+        s = Controller.prepState(newState);
+        return this.setState(s);
       }
     },
     brokenEl: function(section) {
@@ -45,7 +47,8 @@
       }
       props = {
         initState: this.state,
-        setRouterState: this.setRouterState
+        setRouterState: this.setRouterState,
+        collection: app.boats
       };
       if (_.isObject(props.initState)) {
         props.initState.setRouterState = this.setRouterState;

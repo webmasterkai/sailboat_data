@@ -1,11 +1,15 @@
-State = require("ampersand-state")
+State = require("ampersand-model")
 
 data = require './sailboat.yaml'
 
 module.exports = State.extend
   props: data.props
+  fields: data.props
+  extraProperties: 'allow'
+  parse: (item) ->
+    item.retrieved = true
+    item
 
-  #parse: (item) ->
   derived:
     searchStr:
       deps: ['name']
@@ -13,9 +17,9 @@ module.exports = State.extend
         str = @name
         str.toLowerCase()
     title:
-      deps: ['name', 'loa', 'first_built']
+      deps: ['name', 'loa', 'first-built']
       fn: ->
-        @name + ' [' + @first_built + ']'
+        @name + ' [' + @['first-built'] + ']'
     link:
       deps: ['id']
       fn: ->

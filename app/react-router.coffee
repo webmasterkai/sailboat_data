@@ -23,7 +23,8 @@ module.exports = React.createClass
 
   setRouterState: (newState) ->
     if newState
-      @setState Controller.prepState newState
+      s = Controller.prepState(newState)
+      @setState s
 
   brokenEl: (section) ->
     txt = 'Hello there! Unfortunately our application is broken... '
@@ -36,6 +37,7 @@ module.exports = React.createClass
     props =
       initState: @state
       setRouterState: @setRouterState
+      collection: app.boats
 
     if _.isObject props.initState
       props.initState.setRouterState = @setRouterState

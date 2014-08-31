@@ -21,9 +21,10 @@ module.exports = React.createClass
   render: ->
     if @props.initState.searchTxt.length > 2
       colLen = @props.collection.length
-      if colLen == 1
+      if @props.initState.model
         boatInfo = BoatDetail
-          model: @props.collection.models[0]
+          model: @props.initState.model
+          initState: @props.initState
       else
         boatInfo = false
       if colLen > 0
