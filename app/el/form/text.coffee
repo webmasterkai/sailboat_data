@@ -23,6 +23,7 @@ module.exports = React.createClass
               id: @props.id
               value: @props.value
               onChange: @props.onChange
+              onKeyDown: @props.onKeyDown
               type: @props.fieldType
               placeholder: @props.placeholder
             span

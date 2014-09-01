@@ -1,5 +1,7 @@
 React = require 'react'
-{div, p} = require 'reactionary'
+{div, p, label, fieldset} = require 'reactionary'
+
+Typeahead = require('react-typeahead').Typeahead
 
 FormBuilder = require './form_builder'
 Names = require './boat_names'
@@ -15,11 +17,17 @@ module.exports = React.createClass
     data.props.name.value = val
     @props.setRouterState searchTxt: val
 
+  _onKeyDown: (e) ->
+    console.log e.keyCode
+    return false
+
   componentWillMount: ->
     data.props.name.onChange = @setSearchTxt
+    data.props.name.onKeyDown = @_onKeyDown
+    data.props._focus = 'name'
 
   render: ->
-    if @props.initState.searchTxt.length > 2
+    if @props.initState.searchTxt.length > 1 or @props.initState.id
       colLen = @props.collection.length
       if @props.initState.model
         boatInfo = BoatDetail

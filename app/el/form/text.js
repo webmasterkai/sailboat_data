@@ -25,6 +25,7 @@
         id: this.props.id,
         value: this.props.value,
         onChange: this.props.onChange,
+        onKeyDown: this.props.onKeyDown,
         type: this.props.fieldType,
         placeholder: this.props.placeholder
       }), span({

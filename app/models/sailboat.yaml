@@ -1,3 +1,4 @@
+focus: name
 props:
   retrieved:
     type: bool
@@ -5,7 +6,7 @@ props:
     required: true
   name:
     type: string
-    element: hidden
+    element: text
     label: Search
     title: Class Name
     help: Begin typing name of sailboat

@@ -136,3 +136,11 @@ gulp.task 'prod', (cb) ->
     'compress',
     cb
   return
+
+gulp.task 'data', ->
+  r('http://localhost:8000/boat')
+    .pipe source('names.json')
+    .pipe gulp.dest('./app/models/')
+  r('http://localhost:8000/phrf')
+    .pipe source('phrf.json')
+    .pipe gulp.dest('./api/')

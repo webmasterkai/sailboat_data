@@ -11,11 +11,17 @@ module.exports = React.createClass
     if e.preventDefault
       e.preventDefault()
 
+  componentDidMount: ->
+    if @props._focus
+      #console.log 'focus'
+      @refs[@props._focus].getDOMNode().querySelector('input').focus()
+
   render: ->
     fields = []
     _.forEach @props, (field, fieldId) ->
       props =
         key: fieldId
+        ref: fieldId
         id: fieldId
         label: field.label
         placeholder: field.placeholder
@@ -23,6 +29,7 @@ module.exports = React.createClass
         fieldType: field.element
         options: field.options
         onChange: field.onChange
+        onKeyDown: field.onKeyDown
         value: field.value
       if _.contains ['text', 'email'], field.element
         fields.push Text props
