@@ -24,7 +24,7 @@ runSequence = require 'run-sequence'
 data = yaml.safeLoad fs.readFileSync('data.yaml', 'utf8')
 
 gulp.task "browser-sync", ->
-  browserSync.init "public/**",
+  browserSync.init ["public/*.css", "public/*.js", "public/*.html"],
     server:
       baseDir: "public" # Change this to your web root dir
     injectChanges: false
@@ -45,8 +45,6 @@ gulp.task "templates", ->
 gulp.task 'copy', ->
   gulp.src('./images/**')
     .pipe gulp.dest('./public/images/')
-  gulp.src('./api/**')
-    .pipe gulp.dest('./public/api/')
 
 gulp.task 'styles', ->
   gulp.src(["styles/app.less", 'styles/print.less', 'styles/iefix.less'])

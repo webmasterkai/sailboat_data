@@ -38,7 +38,7 @@
   data = yaml.safeLoad(fs.readFileSync('data.yaml', 'utf8'));
 
   gulp.task("browser-sync", function() {
-    browserSync.init("public/**", {
+    browserSync.init(["public/*.css", "public/*.js", "public/*.html"], {
       server: {
         baseDir: "public"
       },
@@ -59,8 +59,7 @@
   });
 
   gulp.task('copy', function() {
-    gulp.src('./images/**').pipe(gulp.dest('./public/images/'));
-    return gulp.src('./api/**').pipe(gulp.dest('./public/api/'));
+    return gulp.src('./images/**').pipe(gulp.dest('./public/images/'));
   });
 
   gulp.task('styles', function() {
