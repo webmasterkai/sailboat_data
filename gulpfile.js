@@ -3,7 +3,7 @@
 
   path = require('path');
 
-  fs = require('fs');
+  fs = require('fs-extra');
 
   gulp = require('gulp');
 
@@ -59,7 +59,8 @@
   });
 
   gulp.task('copy', function() {
-    return gulp.src('./images/**').pipe(gulp.dest('./public/images/'));
+    gulp.src('./images/**').pipe(gulp.dest('./public/images/'));
+    return gulp.src('./api/**').pipe(gulp.dest('./public/api/'));
   });
 
   gulp.task('styles', function() {
@@ -144,12 +145,24 @@
     return gulp.src('./images/**').pipe(gulp.dest('./prod/images/'));
   });
 
+  gulp.task('copy_api', function() {
+    return gulp.src('./api/**').pipe(gulp.dest('./prod/api/'));
+  });
+
   gulp.task('compress', function() {
     return gulp.src("./prod/**").pipe(zopfli()).pipe(gulp.dest("./prod"));
   });
 
   gulp.task('prod', function(cb) {
-    runSequence(['prod_clean', 'set_sha'], ['prod_template', 'copy_css', 'prod_compile'], 'compress', cb);
+    runSequence(['prod_clean', 'set_sha'], ['prod_template', 'copy_css', 'copy_api', 'prod_compile'], 'compress', cb);
+  });
+
+  gulp.task('boats', ['data'], function() {
+    var boats;
+    boats = require('./app/models/names.json');
+    return boats.map(function(boat) {
+      return r('http://localhost:8000/boat/' + boat.id).pipe(source(boat.id + '.json')).pipe(gulp.dest('./api/boat'));
+    });
   });
 
   gulp.task('data', function() {

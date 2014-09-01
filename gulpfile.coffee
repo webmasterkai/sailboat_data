@@ -1,5 +1,5 @@
 path = require 'path'
-fs = require 'fs'
+fs = require 'fs-extra'
 
 gulp = require 'gulp'
 r = require 'request'
@@ -45,6 +45,8 @@ gulp.task "templates", ->
 gulp.task 'copy', ->
   gulp.src('./images/**')
     .pipe gulp.dest('./public/images/')
+  gulp.src('./api/**')
+    .pipe gulp.dest('./public/api/')
 
 gulp.task 'styles', ->
   gulp.src(["styles/app.less", 'styles/print.less', 'styles/iefix.less'])
@@ -125,6 +127,10 @@ gulp.task 'copy_css', ['styles'], ->
   gulp.src('./images/**')
     .pipe gulp.dest('./prod/images/')
 
+gulp.task 'copy_api', ->
+  gulp.src('./api/**')
+    .pipe gulp.dest('./prod/api/')
+
 gulp.task 'compress', ->
   gulp.src("./prod/**")
     .pipe(zopfli())
@@ -132,10 +138,17 @@ gulp.task 'compress', ->
 
 gulp.task 'prod', (cb) ->
   runSequence ['prod_clean', 'set_sha'],
-    ['prod_template', 'copy_css', 'prod_compile'],
+    ['prod_template', 'copy_css', 'copy_api', 'prod_compile'],
     'compress',
     cb
   return
+
+gulp.task 'boats', ['data'], ->
+  boats = require './app/models/names.json'
+  boats.map (boat) ->
+    r('http://localhost:8000/boat/'+boat.id)
+    .pipe source(boat.id+'.json')
+    .pipe gulp.dest('./api/boat')
 
 gulp.task 'data', ->
   r('http://localhost:8000/boat')
