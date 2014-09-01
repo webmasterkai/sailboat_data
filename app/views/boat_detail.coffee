@@ -43,6 +43,11 @@ module.exports = React.createClass
     #   str += ' Designed by '+designer+'.'
     p {}, 'Built ', builtQty, fromSince, first, last, builder, '.', designer
 
+  size: (boat) ->
+    ul
+      className: 'list-inline',
+        li boat.loa
+
   weight: (boat) ->
     ul
       className: 'weight list-inline',
@@ -63,7 +68,7 @@ module.exports = React.createClass
     boatFields = boat.toJSON()
     hide = ['id', 'name', 'notes', 'first-built', 'last-built',
       'designer', 'built', 'bal-type', 'bal-disp', 'disp',
-      'ballast', 'disp-len']
+      'ballast', 'disp-len', 'loa', 'lwl']
     order = ['designer', 'builder', 'loa', 'lwl']
     _.each boatFields, (val, id) ->
       field = boat.fields[id] or {}
