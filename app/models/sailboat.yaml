@@ -7,7 +7,7 @@ props:
   name:
     type: string
     element: text
-    label: Search
+    #label: Search
     title: Class Name
     help: Begin typing name of sailboat
   id:

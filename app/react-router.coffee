@@ -48,4 +48,6 @@ module.exports = React.createClass
       else @brokenEl(section)
     footer = false
 
-    return div header, component, footer
+    return div
+      className: 'container',
+        header, component, footer

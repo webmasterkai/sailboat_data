@@ -5,19 +5,23 @@ module.exports = React.createClass
 
   propTypes:
     id: React.PropTypes.string.isRequired
-    label: React.PropTypes.string.isRequired
+    label: React.PropTypes.string
     fieldType: React.PropTypes.string.isRequired
     placeholder: React.PropTypes.string
 
   render: ->
+    if @props.label
+      fieldLabel = label
+        className: 'control-label'
+        htmlFor: @props.id,
+          @props.label
+    else
+      false
     div
       className: 'form-group',
-        label
-          className: 'col-md-4 control-label'
-          htmlFor: @props.id,
-            @props.label
+        fieldLabel
         div
-          className: 'col-md-4',
+          className: '',
             input
               className: 'form-control'
               id: @props.id
@@ -26,6 +30,7 @@ module.exports = React.createClass
               onKeyDown: @props.onKeyDown
               type: @props.fieldType
               placeholder: @props.placeholder
+              autoComplete: "off"
             span
               className: 'help-block',
                 @props.help

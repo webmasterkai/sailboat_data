@@ -8,18 +8,24 @@
   module.exports = React.createClass({
     propTypes: {
       id: React.PropTypes.string.isRequired,
-      label: React.PropTypes.string.isRequired,
+      label: React.PropTypes.string,
       fieldType: React.PropTypes.string.isRequired,
       placeholder: React.PropTypes.string
     },
     render: function() {
+      var fieldLabel;
+      if (this.props.label) {
+        fieldLabel = label({
+          className: 'control-label',
+          htmlFor: this.props.id
+        }, this.props.label);
+      } else {
+        false;
+      }
       return div({
         className: 'form-group'
-      }, label({
-        className: 'col-md-4 control-label',
-        htmlFor: this.props.id
-      }, this.props.label), div({
-        className: 'col-md-4'
+      }, fieldLabel, div({
+        className: ''
       }, input({
         className: 'form-control',
         id: this.props.id,
@@ -27,7 +33,8 @@
         onChange: this.props.onChange,
         onKeyDown: this.props.onKeyDown,
         type: this.props.fieldType,
-        placeholder: this.props.placeholder
+        placeholder: this.props.placeholder,
+        autoComplete: "off"
       }), span({
         className: 'help-block'
       }, this.props.help)));

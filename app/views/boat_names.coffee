@@ -6,6 +6,8 @@ Name = require './boat_name'
 module.exports = React.createClass
 
   render: ->
+    unless @props.initState.searchTxt.length
+      return false
     s = @props.initState
     names = []
     @props.collection.each (model) ->

@@ -50,15 +50,20 @@ module.exports = React.createClass
         li boat['bal-type']
         li boat.ballast
         li boat['bal-disp']
+        li boat['disp-len']
 
   name: (boat) ->
     h2 boat.name + ' ', small(boat.loa+' - '+boat.lwl)
 
   render: ->
     boat = @props.model
+    unless boat and boat.id
+      return false
     dlist = []
     boatFields = boat.toJSON()
-    hide = ['name', 'notes', 'first-built', 'last-built', 'built']
+    hide = ['id', 'name', 'notes', 'first-built', 'last-built',
+      'designer', 'built', 'bal-type', 'bal-disp', 'disp',
+      'ballast', 'disp-len']
     order = ['designer', 'builder', 'loa', 'lwl']
     _.each boatFields, (val, id) ->
       field = boat.fields[id] or {}
@@ -79,7 +84,7 @@ module.exports = React.createClass
     else
       notes = false
     div
-      className: 'info',
+      className: 'info col-md-8',
         @name boat
         @built boat
         @weight boat

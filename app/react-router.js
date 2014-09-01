@@ -63,7 +63,9 @@
         }
       }).call(this);
       footer = false;
-      return div(header, component, footer);
+      return div({
+        className: 'container'
+      }, header, component, footer);
     }
   });
 

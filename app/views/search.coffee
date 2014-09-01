@@ -12,42 +12,60 @@ BoatDetail = require './boat_detail'
 data = require '../models/sailboat.yaml'
 
 module.exports = React.createClass
+  st:
+    at: -1
+
   setSearchTxt: (e) ->
     val = e.target.value
     data.props.name.value = val
     @props.setRouterState searchTxt: val
 
+  _nav: (nextId) ->
+    @st.at = nextId
+    model = app.boats.at nextId
+    @props.setRouterState model: model, id: model.id
+
+  _up: ->
+    @_nav Math.max(0, @st.at - 1)
+
+  _down: ->
+    @_nav Math.min(app.boats.length-1, @st.at + 1)
+
   _onKeyDown: (e) ->
-    console.log e.keyCode
-    return false
+    if e.keyCode == 27 # esc
+      @props.setRouterState
+        id: null
+        searchTxt: ''
+      return false
+    if e.keyCode == 38 # up
+      @_up()
+    if e.keyCode == 40 # down
+      @_down()
 
   componentWillMount: ->
     data.props.name.onChange = @setSearchTxt
     data.props.name.onKeyDown = @_onKeyDown
     data.props._focus = 'name'
 
+  componentWillUpdate: (nextProps, nextState) ->
+    if nextProps and nextProps.initState
+      #console.log nextProps.initState
+      data.props.name.value = nextProps.initState.searchTxt
+
   render: ->
-    if @props.initState.searchTxt.length > 1 or @props.initState.id
-      colLen = @props.collection.length
-      if @props.initState.model
-        boatInfo = BoatDetail
-          model: @props.initState.model
-          initState: @props.initState
-      else
-        boatInfo = false
-      if colLen > 0
-        listSources = Sources()
-      else
-        listSources = false
-      results = div {},
-        Names
-          collection: app.boats
-          initState: @props.initState
-        boatInfo
-        listSources
+    if @props.initState.model
+      console.log 'hi boat'
+      detail = BoatDetail
+        model: @props.initState.model
+        initState: @props.initState
     else
-      results = false
+      detail = false
     div
-      className: 'boat-data',
-        FormBuilder data.props
-        results
+      className: 'boat-data row',
+        div
+          className: 'col-md-3',
+            FormBuilder data.props
+            Names
+              collection: app.boats
+              initState: @props.initState
+        detail
