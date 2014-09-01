@@ -6,6 +6,9 @@ module.exports = State.extend
   props: data.props
   fields: data.props
   extraProperties: 'allow'
+  url: ->
+    '/api/boat/'+@id+'.json'
+
   parse: (item) ->
     item.retrieved = true
     item

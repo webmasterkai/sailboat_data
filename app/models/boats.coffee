@@ -3,5 +3,5 @@ Item = require('./boat')
 
 module.exports = Collection.extend
   model: Item
-  url: 'http://localhost:8000/boat'
+  url: 'api/boat'
   indexes: ['title']
