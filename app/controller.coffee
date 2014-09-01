@@ -15,21 +15,21 @@ module.exports =
 
   fetchBoat: (model) ->
     unless model.retrieved
-      console.log 'Fetching '+model.id
+      #console.log 'Fetching '+model.id
       model.fetch()
     model
 
   prepState: (s) ->
-    @filterCollection s
-    if app.boats.length and app.boats.length < 21
+    console.log s
+    if s.searchTxt
+      @filterCollection s
+    if app.boats.length and app.boats.length < 11
       app.boats.each @fetchBoat
-      if app.boats.length == 1
-        s.model = app.boats.models[0]
-        s.modelLoaded = false
-      else
-        s.model = null
-        s.modelLoaded = false
-    if s.id
+    if s.searchTxt and not s.id and not s.model
+      s.model = app.boats.at(0)
+      s.id = s.model.id
+    if s.id or s.model
       s.model = @fetchBoat(s.model or app.boats.get(s.id))
+      s.id = s.model.id
       s.modelLoaded = s.model.retrieved
     return s

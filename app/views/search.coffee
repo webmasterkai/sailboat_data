@@ -11,7 +11,7 @@ data = require '../models/sailboat.yaml'
 
 module.exports = React.createClass
   st:
-    at: -1
+    at: 0
 
   setSearchTxt: (e) ->
     val = e.target.value
@@ -21,6 +21,7 @@ module.exports = React.createClass
   _nav: (nextId) ->
     @st.at = nextId
     model = app.boats.at nextId
+    console.log model.id
     @props.setRouterState model: model, id: model.id
 
   _up: ->

@@ -1,7 +1,7 @@
-React = require 'react'
-{classSet} = require 'react/addons'
-{li, a} = require 'reactionary'
+React = require 'react/addons'
 
+{li, a} = require 'reactionary'
+cx = React.addons.classSet
 module.exports = React.createClass
   handleClick: (e) ->
     if e.preventDefault
@@ -14,7 +14,7 @@ module.exports = React.createClass
     active = activeBoat and activeBoat.id == boat.id
     classes = cx
       boat: true
-      'bg-primary': active
+      'bg-success': active
     li
       className: classes,
         a
