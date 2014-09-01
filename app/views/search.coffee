@@ -1,8 +1,6 @@
 React = require 'react'
 {div, p, label, fieldset} = require 'reactionary'
 
-Typeahead = require('react-typeahead').Typeahead
-
 FormBuilder = require './form_builder'
 Names = require './boat_names'
 Sources = require './sources'
@@ -54,7 +52,6 @@ module.exports = React.createClass
 
   render: ->
     if @props.initState.model
-      console.log 'hi boat'
       detail = BoatDetail
         model: @props.initState.model
         initState: @props.initState
