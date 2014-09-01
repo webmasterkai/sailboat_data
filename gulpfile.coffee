@@ -75,7 +75,7 @@ gulp.task "default", ['compile', 'styles', 'templates', 'browser-sync', 'copy'],
 
 gulp.task 'set_sha', (cb) ->
   r_ops =
-    uri: 'https://api.github.com/repos/ookb/rg-client-app/branches/master'
+    uri: 'https://api.github.com/repos/webmasterkai/sailboat_data/branches/master'
     json: true
     headers:
       'user-agent': 'request.js'
