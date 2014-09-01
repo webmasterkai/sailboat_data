@@ -107,7 +107,7 @@
   });
 
   gulp.task('prod_clean', function() {
-    return gulp.src('./prod', {
+    return gulp.src(['./prod/*.js', './prod/*.css', './prod/*.html', './prod/*.html.gz'], {
       read: false
     }).pipe(clean());
   });
@@ -149,11 +149,11 @@
   });
 
   gulp.task('compress', function() {
-    return gulp.src("./prod/**").pipe(zopfli()).pipe(gulp.dest("./prod"));
+    return gulp.src(["./prod/*.js", './prod/*.css', './prod/*.html']).pipe(zopfli()).pipe(gulp.dest("./prod"));
   });
 
   gulp.task('prod', function(cb) {
-    runSequence(['prod_clean', 'set_sha'], ['prod_template', 'copy_css', 'copy_api', 'prod_compile'], 'compress', cb);
+    runSequence(['prod_clean', 'set_sha'], ['prod_template', 'copy_css', 'prod_compile'], 'compress', cb);
   });
 
   gulp.task('boats', ['data'], function() {
