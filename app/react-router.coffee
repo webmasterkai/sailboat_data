@@ -21,6 +21,10 @@ module.exports = React.createClass
   componentDidMount: ->
     @initRouter()
 
+  componentDidUpdate: (prevProps, prevState) ->
+    @urlUpdate prevState, @state
+    return
+
   setRouterState: (newState) ->
     if newState
       s = Controller.prepState(newState)
@@ -29,6 +33,24 @@ module.exports = React.createClass
   brokenEl: (section) ->
     txt = 'Hello there! Unfortunately our application is broken... '
     p txt+section
+
+  urlCreate: (s) ->
+    if s.section == 'favs' and s.ids and s.ids.length
+      urlTxt = s.section+'/'+s.ids.join('/')
+    else
+      urlTxt = s.section+'/'
+    if s.searchTxt
+      urlTxt += s.searchTxt
+    return urlTxt
+
+  urlUpdate: (prev, next) ->
+    newUrl = @urlCreate next
+    oldURL = @urlCreate prev
+    if newUrl != oldURL
+      @router.navigate newUrl, replace: true
+      return true
+    else
+      return false
 
   render: ->
     section = null

@@ -4,3 +4,7 @@
 /app/*.js
 /app/*/*.js
 /app/*/*/*.js
+
+/app/models/phrfs.coffee
+
+/app/models/phrf.coffee

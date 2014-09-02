@@ -1,12 +1,14 @@
 React = require 'react'
 SubCollection = require 'ampersand-subcollection'
 _ = require 'lodash'
+#r = require 'superagent'
 
 Router = require './react-router'
 
 BoatNames = require './models/names'
 
 BoatsCollection = require './models/boats'
+#Phrf = require './models/phrfs'
 
 module.exports =
   blastoff: ->
@@ -18,6 +20,7 @@ module.exports =
     el = document.getElementById('react')
     routerComponent = Router {}
     @container = React.renderComponent routerComponent, el
-
+    #@phrf = new Phrf()
+    #@phrf.fetch()
 # run it
 module.exports.blastoff()

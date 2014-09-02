@@ -11,6 +11,10 @@ module.exports = State.extend
 
   parse: (item) ->
     item.retrieved = true
+    if item.logo
+      item.logo = 'http://sailboatdata.com/'+item.logo
+    if item.phrf
+      item.phrf += ''
     item
 
   derived:

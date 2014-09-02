@@ -27,6 +27,9 @@
     componentDidMount: function() {
       return this.initRouter();
     },
+    componentDidUpdate: function(prevProps, prevState) {
+      this.urlUpdate(prevState, this.state);
+    },
     setRouterState: function(newState) {
       var s;
       if (newState) {
@@ -38,6 +41,31 @@
       var txt;
       txt = 'Hello there! Unfortunately our application is broken... ';
       return p(txt + section);
+    },
+    urlCreate: function(s) {
+      var urlTxt;
+      if (s.section === 'favs' && s.ids && s.ids.length) {
+        urlTxt = s.section + '/' + s.ids.join('/');
+      } else {
+        urlTxt = s.section + '/';
+      }
+      if (s.searchTxt) {
+        urlTxt += s.searchTxt;
+      }
+      return urlTxt;
+    },
+    urlUpdate: function(prev, next) {
+      var newUrl, oldURL;
+      newUrl = this.urlCreate(next);
+      oldURL = this.urlCreate(prev);
+      if (newUrl !== oldURL) {
+        this.router.navigate(newUrl, {
+          replace: true
+        });
+        return true;
+      } else {
+        return false;
+      }
     },
     render: function() {
       var component, footer, header, props, section;

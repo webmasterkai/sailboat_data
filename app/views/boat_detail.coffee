@@ -1,5 +1,5 @@
 React = require 'react'
-{div, h2, h3, p, dl, dt, dd, ul, li, span, small, mark, strong} = require 'reactionary'
+{div, h2, h3, p, dl, dt, dd, ul, li, span, small, mark, strong, img} = require 'reactionary'
 _ = require 'lodash'
 
 module.exports = React.createClass
@@ -60,6 +60,14 @@ module.exports = React.createClass
   name: (boat) ->
     h2 boat.name + ' ', small(boat.loa+' - '+boat.lwl)
 
+  logo: (boat) ->
+    unless boat.logo
+      return false
+    img
+      className: 'pull-right'
+      src: boat.logo
+      alt: boat.name
+
   render: ->
     boat = @props.model
     unless boat and boat.id
@@ -68,8 +76,7 @@ module.exports = React.createClass
     boatFields = boat.toJSON()
     hide = ['id', 'name', 'notes', 'first-built', 'last-built',
       'designer', 'built', 'bal-type', 'bal-disp', 'disp',
-      'ballast', 'disp-len', 'loa', 'lwl']
-    order = ['designer', 'builder', 'loa', 'lwl']
+      'ballast', 'disp-len', 'loa', 'lwl', 'builder', 'logo']
     _.each boatFields, (val, id) ->
       field = boat.fields[id] or {}
       if _.isString(val) and not _.contains(hide, id)
@@ -79,8 +86,9 @@ module.exports = React.createClass
         dlist.push dd
           key: 'dd-'+id,
             val
-      # else
-      #   dlist.push @(@props)
+    if boat.phrf
+      dlist.push dt key: 'dt-phrf', 'PHRF'
+      dlist.push dd key: 'dd-phrf', boat.phrf
     if boat.notes
       notes = div
         className: 'notes',
@@ -90,6 +98,7 @@ module.exports = React.createClass
       notes = false
     div
       className: 'info col-md-8',
+        @logo boat
         @name boat
         @built boat
         @weight boat

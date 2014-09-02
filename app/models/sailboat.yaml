@@ -42,3 +42,7 @@ props:
     title: Displacement
   hull-type:
     type: text
+  perf:
+    type: text
+  headroom:
+    type: text

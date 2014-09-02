@@ -5,8 +5,11 @@ Router = require 'ampersand-router'
 module.exports = Router.extend
 
   routes:
-    '': 'search'
-    'form': 'form'
+    '': -> @redirectTo 'search'
+    'search(/:searchTxt)': 'search'
 
-  search: ->
-    @setReactState section: 'search'
+  search: (searchTxt) ->
+    document.title = 'Sailboat Search'
+    @setReactState
+      searchTxt: searchTxt or ''
+      section: 'search'

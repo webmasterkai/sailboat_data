@@ -20,16 +20,17 @@ module.exports =
     model
 
   prepState: (s) ->
-    console.log s
+    # console.log s
     if s.searchTxt
       @filterCollection s
     if app.boats.length and app.boats.length < 11
       app.boats.each @fetchBoat
-    if s.searchTxt and not s.id and not s.model
+    if s.searchTxt and app.boats.length and not s.id and not s.model
       s.model = app.boats.at(0)
       s.id = s.model.id
     if s.id or s.model
       s.model = @fetchBoat(s.model or app.boats.get(s.id))
+      document.title = s.model.title
       s.id = s.model.id
       s.modelLoaded = s.model.retrieved
     return s

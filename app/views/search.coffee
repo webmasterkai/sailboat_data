@@ -21,8 +21,9 @@ module.exports = React.createClass
   _nav: (nextId) ->
     @st.at = nextId
     model = app.boats.at nextId
-    console.log model.id
+    # console.log model.id
     @props.setRouterState model: model, id: model.id
+    false
 
   _up: ->
     @_nav Math.max(0, @st.at - 1)
@@ -37,9 +38,9 @@ module.exports = React.createClass
         searchTxt: ''
       return false
     if e.keyCode == 38 # up
-      @_up()
+      return @_up()
     if e.keyCode == 40 # down
-      @_down()
+      return @_down()
 
   componentWillMount: ->
     data.props.name.onChange = @setSearchTxt

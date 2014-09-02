@@ -9,11 +9,15 @@
 
   module.exports = Router.extend({
     routes: {
-      '': 'search',
-      'form': 'form'
+      '': function() {
+        return this.redirectTo('search');
+      },
+      'search(/:searchTxt)': 'search'
     },
-    search: function() {
+    search: function(searchTxt) {
+      document.title = 'Sailboat Search';
       return this.setReactState({
+        searchTxt: searchTxt || '',
         section: 'search'
       });
     }
