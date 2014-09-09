@@ -38,9 +38,9 @@ module.exports = React.createClass
     if s.section == 'favs' and s.ids and s.ids.length
       urlTxt = s.section+'/'+s.ids.join('/')
     else
-      urlTxt = s.section+'/'
+      urlTxt = s.section
     if s.searchTxt
-      urlTxt += s.searchTxt
+      urlTxt += '/'+s.searchTxt
     return urlTxt
 
   urlUpdate: (prev, next) ->

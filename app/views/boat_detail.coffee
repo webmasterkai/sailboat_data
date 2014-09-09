@@ -96,6 +96,13 @@ module.exports = React.createClass
           p boat.notes
     else
       notes = false
+    if boat.imgs and boat.imgs.length
+      imgs = boat.imgs.map (image) ->
+        img
+          src: 'http://sailboatdata.com/'+image.link
+          alt: image.text
+    else
+      imgs = false
     div
       className: 'info col-md-8',
         @logo boat
@@ -106,3 +113,4 @@ module.exports = React.createClass
           className: 'dl-horizontal',
             dlist
         notes
+        imgs

@@ -165,8 +165,7 @@
   });
 
   gulp.task('data', function() {
-    r('http://localhost:8000/boat').pipe(source('names.json')).pipe(gulp.dest('./app/models/'));
-    return r('http://localhost:8000/phrf').pipe(source('phrf.json')).pipe(gulp.dest('./api/'));
+    return r('http://localhost:8000/boat').pipe(source('names.json')).pipe(gulp.dest('./app/models/'));
   });
 
 }).call(this);

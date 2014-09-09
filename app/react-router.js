@@ -47,10 +47,10 @@
       if (s.section === 'favs' && s.ids && s.ids.length) {
         urlTxt = s.section + '/' + s.ids.join('/');
       } else {
-        urlTxt = s.section + '/';
+        urlTxt = s.section;
       }
       if (s.searchTxt) {
-        urlTxt += s.searchTxt;
+        urlTxt += '/' + s.searchTxt;
       }
       return urlTxt;
     },
