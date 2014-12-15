@@ -55,7 +55,9 @@ module.exports = React.createClass
         li boat['bal-type']
         li boat.ballast
         li boat['bal-disp']
-        li boat['disp-len']
+        li boat['disp-len'] # D/L Ratio
+        li 'CR: '+boat['comfortRatio']
+        li 'CSF: '+boat['csf']
 
   name: (boat) ->
     h2 boat.name + ' ', small(boat.loa+' - '+boat.lwl)
@@ -99,6 +101,7 @@ module.exports = React.createClass
     if boat.imgs and boat.imgs.length
       imgs = boat.imgs.map (image) ->
         img
+          id: image.link
           src: 'http://sailboatdata.com/'+image.link
           alt: image.text
     else

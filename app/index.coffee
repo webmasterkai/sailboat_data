@@ -9,6 +9,7 @@ BoatNames = require './models/names'
 
 BoatsCollection = require './models/boats'
 #Phrf = require './models/phrfs'
+calc = require './models/comfortRatio'
 
 module.exports =
   blastoff: ->
@@ -16,6 +17,7 @@ module.exports =
     self = window.app = @
     boats = new BoatsCollection BoatNames#, parse: true
     app.boats = new SubCollection boats
+    app.calc = calc
     # Init the React application router.
     el = document.getElementById('react')
     routerComponent = Router {}
