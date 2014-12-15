@@ -156,12 +156,16 @@
     runSequence(['prod_clean', 'set_sha'], ['prod_template', 'copy_css', 'prod_compile'], 'compress', cb);
   });
 
-  gulp.task('boats', ['data'], function() {
+  gulp.task('boats', ['data', 'hooper'], function() {
     var boats;
     boats = require('./app/models/names.json');
     return boats.map(function(boat) {
       return r('http://localhost:8000/boat/' + boat.id).pipe(source(boat.id + '.json')).pipe(gulp.dest('./api/boat'));
     });
+  });
+
+  gulp.task('hooper', function() {
+    return r('http://localhost:8000/hooper').pipe(source('hooper.json')).pipe(gulp.dest('./api'));
   });
 
   gulp.task('data', function() {

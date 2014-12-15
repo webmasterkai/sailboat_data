@@ -29,10 +29,10 @@ gulp.task "browser-sync", ->
       baseDir: "public" # Change this to your web root dir
     injectChanges: false
     logConnections: true
-    ghostMode:
-      clicks: true
-      scroll: true
-      location: true
+    # ghostMode:
+    #   clicks: true
+    #   scroll: true
+    #   location: true
   return
 
 gulp.task "templates", ->
@@ -141,12 +141,17 @@ gulp.task 'prod', (cb) ->
     cb
   return
 
-gulp.task 'boats', ['data'], ->
+gulp.task 'boats', ['data', 'hooper'], ->
   boats = require './app/models/names.json'
   boats.map (boat) ->
     r('http://localhost:8000/boat/'+boat.id)
     .pipe source(boat.id+'.json')
     .pipe gulp.dest('./api/boat')
+
+gulp.task 'hooper', ->
+  r('http://localhost:8000/hooper')
+    .pipe source('hooper.json')
+    .pipe gulp.dest('./api')
 
 gulp.task 'data', ->
   r('http://localhost:8000/boat')
