@@ -1,1 +1,48 @@
-{"beam":"22.42' /  6.83m","builder":"Pearson Tillotson(Corsair M.)","builders":{"built-by":{"link":"view_builder.asp?builder_id=196","text":"Corsair Marine"}},"construct":"FG","designer":"Ian Farrier","designers":{"designed-by":{"link":"view_designer.asp?designer_id=170","text":"Ian Farrier"}},"disp":"3630 lbs./  1647 kgs.","disp-len":"60.02","draft-max":"5.50' /  1.68m","draft-min":"1.67' /  0.51m","first-built":"1992","hull-type":"Trimaran Dbrd.","id":"6","imgs":[{"link":"imagehelper.asp?file_id=3011","text":"F-31 drawing on sailboatdata.com"}],"listed-sa":"599 ft2 /  55.65 m2","loa":"30.83' /  9.40m","lwl":"30.00' /  9.14m","name":"F-31 SPORT CRUISER","rig-type":"Fractional  Sloop","sa-disp":"40.69","tanks":{"water":"20 gals. /  76 ltrs."},"update":{"deleted":0,"errors":0,"inserted":0,"replaced":1,"skipped":0,"unchanged":0}}
+{
+  "beam": "22.42' /  6.83m",
+  "builder": "Pearson Tillotson(Corsair M.)",
+  "builders": {
+    "built-by": {
+      "link": "view_builder.asp?builder_id=196",
+      "text": "Corsair Marine"
+    }
+  },
+  "construct": "FG",
+  "designer": "Ian Farrier",
+  "designers": {
+    "designed-by": {
+      "link": "view_designer.asp?designer_id=170",
+      "text": "Ian Farrier"
+    }
+  },
+  "disp": "3630 lbs./  1647 kgs.",
+  "disp-len": "60.02",
+  "draft-max": "5.50' /  1.68m",
+  "draft-min": "1.67' /  0.51m",
+  "first-built": "1992",
+  "hull-type": "Trimaran Dbrd.",
+  "id": "6",
+  "imgs": [
+    {
+      "link": "imagehelper.asp?file_id=3011",
+      "text": "F-31 drawing on sailboatdata.com"
+    }
+  ],
+  "listed-sa": "599 ft2 /  55.65 m2",
+  "loa": "30.83' /  9.40m",
+  "lwl": "30.00' /  9.14m",
+  "name": "F-31 SPORT CRUISER",
+  "rig-type": "Fractional  Sloop",
+  "sa-disp": "40.69",
+  "tanks": {
+    "water": "20 gals. /  76 ltrs."
+  },
+  "update": {
+    "deleted": 0,
+    "errors": 0,
+    "inserted": 0,
+    "replaced": 1,
+    "skipped": 0,
+    "unchanged": 0
+  }
+}
